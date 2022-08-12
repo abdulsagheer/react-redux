@@ -3,6 +3,7 @@ import "./App.css";
 import { v4 as uuid } from "uuid";
 // Reusable components
 import Comment from "./components/comments/comment";
+import ApprovalCard from "./components/ApprovalCard/ApprovalCard";
 
 // Comment Data for mapping
 const comments = [
@@ -37,12 +38,14 @@ function App() {
   return (
     <div className="ui container comments">
       {comments.map((comment) => (
-        <Comment
-          key={uuid()}
-          author={comment.author}
-          time={comment.time}
-          comment={comment.comment}
-        />
+        <ApprovalCard>
+          <Comment
+            key={uuid()}
+            author={comment.author}
+            time={comment.time}
+            comment={comment.comment}
+          />
+        </ApprovalCard>
       ))}
     </div>
   );
