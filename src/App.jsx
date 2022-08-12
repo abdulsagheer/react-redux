@@ -1,23 +1,49 @@
 import "./App.css";
-import faker from "faker";
+// Libraries
+import { v4 as uuid } from "uuid";
+// Reusable components
+import Comment from "./components/comments/comment";
+
+// Comment Data for mapping
+const comments = [
+  {
+    author: "ABDUL SAGHEER",
+    time: "1 day",
+    comment: "Stupendous Pic dude😍!!!",
+  },
+  {
+    author: "MUSKAN UNNISA",
+    time: "2 weeks",
+    comment: "Awesome Pic bro😊!!!",
+  },
+  {
+    author: "MOHAMMED SAQIB AHMED",
+    time: "1 week",
+    comment: "Kya lag rahe ho bhai😍!!!",
+  },
+  {
+    author: "Umme Sadaf",
+    time: "3 hours",
+    comment: "Slaying it🔥!!!",
+  },
+  {
+    author: "Aman Kumar Verma",
+    time: "36 sec",
+    comment: "Bawal bhenchod 😏!!!",
+  },
+];
 
 function App() {
   return (
     <div className="ui container comments">
-      <div className="comment">
-        <a href="/" className="avatar">
-          <img src={faker.image.image()} alt="avatar" />
-        </a>
-        <div className="content">
-          <a href="/" className="author">
-            ABDUL SAGHEER
-          </a>
-          <div className="metadata">
-            <span className="date">2 hours ago</span>
-          </div>
-          <div className="text">An Awesome pic dude!!</div>
-        </div>
-      </div>
+      {comments.map((comment) => (
+        <Comment
+          key={uuid()}
+          author={comment.author}
+          time={comment.time}
+          comment={comment.comment}
+        />
+      ))}
     </div>
   );
 }
